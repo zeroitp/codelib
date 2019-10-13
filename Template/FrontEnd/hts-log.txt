@@ -1,0 +1,27 @@
+HTTrack3.49-2+htsswf+htsjava launched on Sun, 13 Oct 2019 16:28:44 at http://demo.themeify.com/nunu1/# +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" http://demo.themeify.com/nunu1/# -O1 "D:\Project Web\CodeLibrary\Template\FrontEnd\CodeLibFE" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/bootstrap/fonts/glyphicons-halflings-regular.eot
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/bootstrap/fonts/glyphicons-halflings-regular.eot?
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/bootstrap/fonts/glyphicons-halflings-regular.woff2
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/bootstrap/fonts/glyphicons-halflings-regular.woff
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/bootstrap/fonts/glyphicons-halflings-regular.ttf
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/css/fonts/montserrat-bold-webfont.eot
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/css/fonts/montserrat-bold-webfont.eot?
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/css/fonts/montserrat-bold-webfont.woff2
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/css/fonts/montserrat-bold-webfont.woff
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/css/fonts/montserrat-bold-webfont.ttf
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/css/fonts/FuturaBT-Medium_gdi.eot
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/css/fonts/FuturaBT-Medium_gdi.eot?
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/css/fonts/FuturaBT-Medium_gdi.woff
+16:30:44	Warning: 	File not parsed, looks like binary: demo.themeify.com/nunu1/css/fonts/FuturaBT-Medium_gdi.ttf
+16:30:44	Error: 	"Not Found" (404) at link demo.themeify.com/nunu1/css/buttons.png (from demo.themeify.com/nunu1/css/jquery.simplyscroll.css)
+16:30:44	Error: 	"Not Found" (404) at link demo.themeify.com/nunu1/moreImage/gallery1.html (from demo.themeify.com/nunu1/js/custom.js)
+
+HTTrack Website Copier/3.49-2 mirror complete in 2 minutes 0 seconds : 75 links scanned, 72 files written (3668927 bytes overall) [3675582 bytes received at 30629 bytes/sec], 26711 bytes transferred using HTTP compression in 1 files, ratio 22%, 12.5 requests per connection
+(2 errors, 14 warnings, 0 messages)
