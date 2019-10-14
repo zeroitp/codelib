@@ -1,67 +1,44 @@
-﻿/// <binding BeforeBuild='default' />
+﻿/// <binding AfterBuild='copy' />
 /*
 This file is the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. https://go.microsoft.com/fwlink/?LinkId=518007
 */
 
+//https://semaphoreci.com/community/tutorials/getting-started-with-gulp-js
+
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
-var rimraf = require("rimraf");
-var merge = require('merge-stream');
+var jsSources = ['wwwroot/scripts/*.js'];
+var webConfig = ['obj/Debug/netcoreapp3.0/PubTmp/Out/web.config'];
+var jsonFile = ['package.json',
+    'bin/Debug/netcoreapp3.0/CodeLib.runtimeconfig.json',
+    'bin/Debug/netcoreapp3.0/CodeLib.deps.json',
+    'appsettings.json',
+    'appsettings.Development.json'
+];
+var wwwroot = ['wwwroot'];
+var dllFile = ['bin/Debug/netcoreapp3.0/CodeLib.dll',
+    'bin/Debug/netcoreapp3.0/CodeLib.exe',
+    'bin/Debug/netcoreapp3.0/CodeLib.pdb',
+    'bin/Debug/netcoreapp3.0/CodeLib.Views.dll',
+    'bin/Debug/netcoreapp3.0/CodeLib.Views.pdb'
+];
 
-gulp.task("minify", function () {
+var desFolder = 'D:\Project Web\CodeLibrary\test';
 
-    var streams = [
-        gulp.src(["wwwroot/js/*.js"])
-            .pipe(uglify())
-            .pipe(concat("site.min.js"))
-            .pipe(gulp.dest("wwwroot/lib/site"))
-    ];
+gulp.task('copy', gulp.series(function () {
+    gulp.src(webConfig).pipe(gulp.dest(desFolder));
+    //gulp.src(jsonFile).pipe(gulp.dest(desFolder));
+    //gulp.src(wwwroot).pipe(gulp.dest(desFolder));
+    //gulp.src(dllFile).pipe(gulp.dest(desFolder));
+}));
 
-    return merge(streams);
-});
+gulp.task('js', gulp.series(function () {
+    gulp.src(jsSources)
+        .pipe(uglify())
+        .pipe(concat('script.js'))
+        .pipe(gulp.dest(jsSources));        
+}));
 
-// Dependency Dirs
-var deps = {
-    "azure-storage": {
-        "lib/**/**/**/*": ""
-    },
-    "bootstrap": {
-        "dist/**/*": ""
-    },
-    "jquery": {
-        "dist/*": ""
-    },
-    "jquery-validation": {
-        "dist/**/*": ""
-    },
-    "jquery-validation-unobtrusive": {
-        "dist/*": ""
-    },
-    "popper.js": {
-        "dist/**/*": ""
-    },
-};
-
-gulp.task("clean", function (cb) {
-    return rimraf("wwwroot/vendor/", cb);
-});
-
-gulp.task("scripts", function () {
-
-    var streams = [];
-
-    for (var prop in deps) {
-        console.log("Prepping Scripts for: " + prop);
-        for (var itemProp in deps[prop]) {
-            streams.push(gulp.src("node_modules/" + prop + "/" + itemProp)
-                .pipe(gulp.dest("wwwroot/vendor/" + prop + "/" + deps[prop][itemProp])));
-        }
-    }
-
-    return merge(streams);
-
-});
-
-gulp.task("default", ['clean', 'minify', 'scripts']);
+gulp.task("default", gulp.series('copy'));
