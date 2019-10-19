@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='copy' />
+﻿/// <binding AfterBuild='default' />
 /*
 This file is the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. https://go.microsoft.com/fwlink/?LinkId=518007
@@ -25,20 +25,24 @@ var dllFile = ['bin/Debug/netcoreapp3.0/CodeLib.dll',
     'bin/Debug/netcoreapp3.0/CodeLib.Views.pdb'
 ];
 
-var desFolder = 'D:\Project Web\CodeLibrary\test';
+var desFolder = 'D:/Project Web/CodeLibrary/test/';
 
-gulp.task('copy', gulp.series(function () {
+gulp.task('copy', gulp.series(function (done) {
     gulp.src(webConfig).pipe(gulp.dest(desFolder));
-    //gulp.src(jsonFile).pipe(gulp.dest(desFolder));
-    //gulp.src(wwwroot).pipe(gulp.dest(desFolder));
-    //gulp.src(dllFile).pipe(gulp.dest(desFolder));
+    gulp.src(jsonFile).pipe(gulp.dest(desFolder));
+    gulp.src(wwwroot).pipe(gulp.dest(desFolder));
+    gulp.src(dllFile).pipe(gulp.dest(desFolder));
+
+    done();
 }));
 
-gulp.task('js', gulp.series(function () {
+gulp.task('js', gulp.series(function (done) {
     gulp.src(jsSources)
         .pipe(uglify())
         .pipe(concat('script.js'))
-        .pipe(gulp.dest(jsSources));        
+        .pipe(gulp.dest(jsSources));
+
+    done();
 }));
 
-gulp.task("default", gulp.series('copy'));
+gulp.task("default", gulp.series('copy', 'js'));
